@@ -1,0 +1,4 @@
+mode: set
+goex_tests/main.go:3.41,5.2 1 1
+goex_tests/main.go:7.49,9.2 1 1
+goex_tests/main.go:17.14,17.15 0 0
