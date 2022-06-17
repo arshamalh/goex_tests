@@ -96,22 +96,15 @@ type smsServiceMock struct {
 
 // Our mocked smsService method
 func (m *smsServiceMock) SendChargeNotification(value int) error {
-	fmt.Println("Mocked charge notification function")
 	fmt.Printf("Value passed in: %d\n", value)
+
 	// this records that the method was called and passes in the value
 	// it was called with
 	_ = m.Called(value)
-	// it then returns whatever we tell it to return
-	// in this case true to simulate an SMS Service Notification
-	// sent out
-	return nil
-}
 
-// we need to satisfy our MessageService interface
-// which sadly means we have to stub out every method
-// defined in that interface
-func (m *smsServiceMock) DummyFunc() {
-	fmt.Println("Dummy")
+	// it then returns whatever we tell it to return,
+	// in this case true to simulate an SMS Service Notification sent out
+	return nil
 }
 
 // TestChargeCustomer is where the magic happens
@@ -126,7 +119,8 @@ func TestChargeCustomer(t *testing.T) {
 
 	// next we want to define the service we wish to test
 	myService := MyService{smsService}
-	// and call said method
+
+	// and call ChargeCustomer method
 	myService.ChargeCustomer(100)
 
 	// at the end, we verify that our myService.ChargeCustomer

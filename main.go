@@ -27,16 +27,16 @@ type MessageService interface {
 // SMSService is our implementation of MessageService
 type SMSService struct{}
 
-// MyService uses the MessageService to notify clients
-type MyService struct {
-	messageService MessageService
-}
-
 // SendChargeNotification notifies clients they have been charged via SMS
 // This is the method we are going to mock
 func (sms SMSService) SendChargeNotification(value int) error {
 	fmt.Println("Sending Production Charge Notification")
 	return nil
+}
+
+// MyService uses the MessageService to notify clients
+type MyService struct {
+	messageService MessageService
 }
 
 // ChargeCustomer performs the charge to the customer
